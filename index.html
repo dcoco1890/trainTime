@@ -1,16 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Train Schedule</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Teko&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
-<body>
 
-    
-<script src="https://www.gstatic.com/firebasejs/6.2.3/firebase.js"></script>
-<script src="/Javascripting/trainTime/assets/js/appjs.js"></script>
+<body>
+    <header>
+        <div class="jumbotron py-4">
+            <h1 class="text-center">TrainTime</h1>
+        </div>
+    </header>
+
+    <br><br>
+
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-md-10 offset-md-1">
+                <div class="box shadow-lg rounded">
+                    <div class="card border-0">
+                        <div class="card-header py-1 pl-1" id="ch">
+                            <h4 class=" text-light my-0">Trains</h4>
+                        </div>
+                        <div class="card-body p-1 table-responsive">
+                            <table class="table table-striped table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Train Name</th>
+                                        <th scope="col">Destination</th>
+                                        <th scope="col">Frequency</th>
+                                        <th scope="col">Next Arrival</th>
+                                        <th scope="col">Minutes Away</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>TopTrain</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                        <td>@mdo</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="box shadow-lg rounded">
+                    <div class="card border-0">
+                        <div class="card-header py-1 pl-1" id="ch">
+                            <h4 class=" text-light my-0">Add A Train</h4>
+                        </div>
+                        <div class="card-body p-1">
+                            <form>
+                                <div class="form-group">
+                                    <label for="train-name">Train Name</label>
+                                    <input class="form-control form-control-sm" type="text" placeholder="Train">
+                                </div>
+                                <div class="form-group">
+                                    <label for="destination">Destination</label>
+                                    <input class="form-control form-control-sm" type="text" placeholder="Destination">
+                                </div>
+                                <div class="form-group">
+                                    <label for="first">First Train Time</label>
+                                    <input class="form-control form-control-sm" type="text" placeholder="Time">
+                                </div>
+                                <div class="form-group">
+                                    <label for="freq">Frequency</label>
+                                    <input class="form-control form-control-sm" type="text" placeholder="Frequency">
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase.js"></script>
+    <script src="/Javascripting/trainTime/assets/js/appjs.js"></script>
 </body>
+
 </html>
