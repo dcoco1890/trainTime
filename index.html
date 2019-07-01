@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 
 <body>
@@ -39,14 +42,8 @@
                                         <th scope="col">Minutes Away</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>TopTrain</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                    </tr>
+                                <tbody id="start">
+                              
                                 </tbody>
                             </table>
                         </div>
@@ -65,21 +62,24 @@
                             <form>
                                 <div class="form-group">
                                     <label for="train-name">Train Name</label>
-                                    <input class="form-control form-control-sm" type="text" placeholder="Train">
+                                    <input class="form-control form-control-sm" id="name" type="text" placeholder="Train" maxlength="20">
                                 </div>
                                 <div class="form-group">
                                     <label for="destination">Destination</label>
-                                    <input class="form-control form-control-sm" type="text" placeholder="Destination">
+                                    <input class="form-control form-control-sm" id="dest" type="text" placeholder="Destination" maxlength="20">
                                 </div>
                                 <div class="form-group">
                                     <label for="first">First Train Time</label>
-                                    <input class="form-control form-control-sm" type="text" placeholder="Time">
+                                    <input class="form-control form-control-sm" id="time" type="time" placeholder="Time">
                                 </div>
-                                <div class="form-group">
-                                    <label for="freq">Frequency</label>
-                                    <input class="form-control form-control-sm" type="text" placeholder="Frequency">
+                                <div class="form-group mb-2">
+                                    <label for="freq">Frequency (minutes)</label>
+                                    <input class="form-control form-control-sm" id="freq" type="number" placeholder="Frequency">
                                 </div>
-
+                                <div class="d-flex flex-row justify-content-center">
+                                        <button type="button" id="submit" type="submit" class="btn btn-outline-dark">Submit</button>
+                                </div>
+                                
                             </form>
 
                         </div>
@@ -91,8 +91,8 @@
 
 
 
-    <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase.js"></script>
-    <script src="/Javascripting/trainTime/assets/js/appjs.js"></script>
+    
+    <script src="assets/js/appjs.js"></script>
 </body>
 
 </html>

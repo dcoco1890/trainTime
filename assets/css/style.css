@@ -22,4 +22,5 @@ body{
 
 label, .form-group {
     margin-bottom: 0;
+    font-size: smaller;
 }
