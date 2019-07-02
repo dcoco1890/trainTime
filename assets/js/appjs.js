@@ -21,61 +21,58 @@ let data = {
   time: time,
 }
 
-function updateTable (value) {
+function updateTable(value) {
   var n = value.trainName;
   var d = value.destination;
   var f = value.frequent;
   var t = value.time;
 
-  // grabs the hour and the minutes from the time and passes them into the moment function
-  var h = t.slice(0,2);  // grabs the first two numbers (08:35) == (08)
-  var m = t.slice(-2);    // grabs the last two numbers (08:35) == (35)
-  var mins = moment({ hour: h, minute: m });
-  var tt = mins.fromNow();
+
+  var start = moment(t, "HH:mm").subtract(1, "years");
+  console.log('start :', start);
   
-  var mintonow = mins.diff(moment(), "minutes");
-  console.log('mins.format("X") :', mins.format("X"));
-  console.log('mintonow :', mintonow);
-  console.log('tt :', tt);
-  
- 
-  
-  console.log('n,d,t,f :', n,d,t,f);
-  if(n === undefined || n === "" || d === undefined || d === ""){
+  var diffTime = moment().diff(moment(start), "minutes");
+
+  // calculating the remainder and minutes till arrival
+  let rem = diffTime % f;
+  let minsT = f - rem;
+
+  console.log('minsT :', minsT);
+
+  var next = moment().add(minsT, "minutes");
+
+  if (n === undefined || n === "" || d === undefined || d === "") {
     // dont add to table if name or dest is blank
   }
-  else{
+  else {
     var x = $('<tr>');
-    x.html(`<td>${n}</td> <td>${d}</td> <td>${f}</td> <td>@</td> <td>@</td>`);
+    x.html(`<td>${n}</td> <td>${d}</td> <td>${f}</td> <td>${moment(next).format("hh:mm")}</td> <td>${minsT}</td>`);
     $('#start').append(x);
   }
-
-
 }
+
+
+
+
+database.ref().on("child_added", function (snap) {
+  var x = snap.val();
+  updateTable(x);
+}, function (error) {
+  console.log('error.code :', error.code);
+});
+
+
+$('#submit').on("click", grab);
+
 
 function grab(e) {
 
   e.preventDefault();
-
   data.trainName = $('#name').val().trim();
   data.destination = $('#dest').val().trim();
   data.frequent = $('#freq').val().trim();
   data.time = $('#time').val().trim();
 
-  // let 
-
-  // needs code to prevent pushing inaccurate values
   database.ref().push(data);
 
 }
-
-database.ref().on("child_added", function(snap){
-  var x = snap.val();
-  updateTable(x);
-  
-
-}, function(error){
-  console.log('error.code :', error.code);
-});
-
-$('#submit').on("click", grab);
