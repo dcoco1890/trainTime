@@ -24,3 +24,9 @@ label, .form-group {
     margin-bottom: 0;
     font-size: smaller;
 }
+#clock {
+ background-color: #191e28;
+ color: #f1f0ea;
+ width: 20%;
+ height:3rem;
+}

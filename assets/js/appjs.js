@@ -27,17 +27,12 @@ function updateTable(value) {
   var f = value.frequent;
   var t = value.time;
 
-
   var start = moment(t, "HH:mm").subtract(1, "years");
-  console.log('start :', start);
-  
   var diffTime = moment().diff(moment(start), "minutes");
 
   // calculating the remainder and minutes till arrival
   let rem = diffTime % f;
   let minsT = f - rem;
-
-  console.log('minsT :', minsT);
 
   var next = moment().add(minsT, "minutes");
 
@@ -49,6 +44,14 @@ function updateTable(value) {
     x.html(`<td>${n}</td> <td>${d}</td> <td>${f}</td> <td>${moment(next).format("hh:mm")}</td> <td>${minsT}</td>`);
     $('#start').append(x);
   }
+}
+
+function updateClock () {
+  var time = moment().format("hh:mm a");
+  $("#c").text(time);
+ 
+ 
+  
 }
 
 
@@ -64,7 +67,6 @@ database.ref().on("child_added", function (snap) {
 
 $('#submit').on("click", grab);
 
-
 function grab(e) {
 
   e.preventDefault();
@@ -76,3 +78,10 @@ function grab(e) {
   database.ref().push(data);
 
 }
+
+setInterval(updateClock, 60*1000);
+var inny = setInterval(function(){
+  var time = moment().format("hh:mm a");
+  $("#c").text(time);
+  clearInterval(inny);
+}, 1);
