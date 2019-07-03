@@ -30,3 +30,7 @@ label, .form-group {
  width: 20%;
  height:3rem;
 }
+
+#c {
+    font-size: 1.6rem;
+}

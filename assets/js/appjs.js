@@ -29,11 +29,11 @@ function updateTable(value) {
 
   var start = moment(t, "HH:mm").subtract(1, "years");
   var diffTime = moment().diff(moment(start), "minutes");
-
+  
   // calculating the remainder and minutes till arrival
-  let rem = diffTime % f;
-  let minsT = f - rem;
-
+  var rem = diffTime % f;
+  var minsT = f - rem;
+  
   var next = moment().add(minsT, "minutes");
 
   if (n === undefined || n === "" || d === undefined || d === "") {
